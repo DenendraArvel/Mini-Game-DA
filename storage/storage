@@ -1,0 +1,186 @@
+            <!-- // botBrain() {
+            //     const option = ["✊", "✋", "✌"];
+            //     const bot = option[Math.floor(Math.random() * option.length)];
+            //     return bot;
+            // }
+    
+            // winCalculation() {
+            //     if(this.botOption == "✋" && this.playerOption == "✌"){
+            //         return this.winner = this.playerName
+            //     }else if(this.botOption == "✋" && this.playerOption == "✊"){
+            //         return this.winner = this.botName
+            //     }else  if(this.botOption == "✊" && this.playerOption == "✋"){
+            //         return this.winner = this.playerName
+            //     }else if(this.botOption == "✊" && this.playerOption == "✌"){
+            //         return this.winner = this.botName
+            //     }else if(this.botOption == "✌" && this.playerOption == "✊"){
+            //         return this.winner = this.playerName
+            //     }else if(this.botOption == "✌" && this.playerOption == "✋"){
+            //         return this.winner = this.botName
+            //     }
+            //     else {
+            //         return this.winner = "SERI"
+            //     }
+            // }
+                    <!-- const inGame = document.getElementById("inGame");
+                    const result = document.getElementById("result");
+            
+                    inGame.textContent = "..."
+                     result.textContent = "..."
+            
+                     setTimeout(() => {
+                         inGame.textContent = `${start.player1Option} VS ${start.player2Option}`
+                         result.textContent = start.matchResult();
+                     }, 500); -->
+// {
+//     const start = new Start();
+//     start.player1Option = params
+//     console.log("p1 memilih", start.player1Option)
+//     // const player1Option = params;
+// }
+
+// function pickOption2(params) {
+//     const start = new Start();
+//     start.player2Option = params
+//     console.log("p2 memilih", start.player2Option)
+    // const player1Option = params;
+// }
+// {
+//     const start = new Start();
+//     start.setplayerOption = params
+//     start.setbotOption = start.botBrain();
+//     start.winCalculation();
+//     console.log(`player: ${start.playerOption} VS bot: ${start.botOption}`)
+//     console.log("hasil akhir", start.matchResult())
+
+//     const inGame = document.getElementById("inGame");
+//     const result = document.getElementById("result");
+
+//     inGame.textContent = "..."
+//     result.textContent = "..."
+
+//     setTimeout(() => {
+    //         inGame.textContent = `${start.playerOption} VS ${start.botOption}`
+    //         result.textContent = start.matchResult();
+//     }, 500);
+
+// } -->
+                    // start.player1Option = "✊"
+                // start.player1Option = "✋"
+        // start.player1Option = "✌"
+        // start.winCalculation();
+        // console.log("p2 memilih", emoji);
+                // start.player1Option = "✊"
+                // start.player1Option = "✋"
+        // start.player1Option = "✌"
+
+
+
+
+
+
+        
+            // matchResult() {
+            //     if(this.winner != "SERI"){
+            //         return `${this.winner} MENANG!`;
+            //         consol.log("masuk")
+            //     }
+            //     else {
+            //         return `${this.winner}, Tidak Ada Pemenang`;
+            //     }
+            // }
+        // console.log("masuk3")
+        // console.log("masuk3")
+
+        <script>
+class Start {
+    constructor() {
+        this.player1Name = "Player 1";
+        this.player2Name = "Player 2";
+        this.player1Option = null;
+        this.player2Option = null;
+        this.winner = "";
+    }
+
+    // Player 1 memilih
+    setPlayer1(option) {
+        this.player1Option = option;
+        this.checkGame();
+    }
+
+    // Player 2 memilih
+    setPlayer2(option) {
+        this.player2Option = option;
+        this.checkGame();
+    }
+
+    // Cek apakah dua-duanya sudah memilih
+    checkGame() {
+        if (this.player1Option && this.player2Option) {
+            this.calculateWinner();
+            this.showResult();
+        }
+    }
+
+    // Hitung pemenang
+    calculateWinner() {
+        const p1 = this.player1Option;
+        const p2 = this.player2Option;
+
+        if (p1 === p2) {
+            this.winner = "SERI";
+        } else if (
+            (p1 === "✊" && p2 === "✌") ||
+            (p1 === "✋" && p2 === "✊") ||
+            (p1 === "✌" && p2 === "✋")
+        ) {
+            this.winner = this.player1Name;
+        } else {
+            this.winner = this.player2Name;
+        }
+    }
+
+    // Tampilkan ke HTML
+    showResult() {
+        document.getElementById("inGame").textContent =
+            `${this.player1Option} VS ${this.player2Option}`;
+
+        document.getElementById("result").textContent =
+            this.winner === "SERI"
+                ? "SERI! Tidak ada pemenang"
+                : `${this.winner} MENANG!`;
+
+        // reset ronde
+        this.player1Option = null;
+        this.player2Option = null;
+    }
+}
+
+// SATU game saja
+const game = new Start();
+
+// Klik Player 1
+function pickOption1(option) {
+    game.setPlayer1(option);
+}
+
+// Klik Player 2
+function pickOption2(option) {
+    game.setPlayer2(option);
+}
+
+// Keyboard control
+window.addEventListener("keydown", (e) => {
+    const key = e.key.toLowerCase();
+
+    // Player 1
+    if (key === "a") pickOption1("✊");
+    if (key === "s") pickOption1("✋");
+    if (key === "d") pickOption1("✌");
+
+    // Player 2
+    if (key === "i") pickOption2("✊");
+    if (key === "o") pickOption2("✋");
+    if (key === "p") pickOption2("✌");
+});
+</script>

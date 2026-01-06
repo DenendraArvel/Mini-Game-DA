@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Mini Games Web</title>
+    <link rel="stylesheet" href="/layout/style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="in-app">
+            <p>Skor Pemain: <span id="score1">0</span></p>
+            <div class="summary">
+                <h2 class="title">Match Result</h2>
+                <h1 id="inGame"></h1>
+                <h3 id="result"></h3>
+            </div>
+            <p>Skor Bot: <span id="score2">0</span></p>
+        </div>
+        
+        <div class="games">
+            <div class="option" onclick="pickOption('✊')">✊</div>
+            <div class="option" onclick="pickOption('✋')">✋</div>
+            <div class="option" onclick="pickOption('✌')">✌</div>
+        </div>
+
+        <a href="/section.html">Kembali</a>
+    </div>
+
+    <script>
+        class Start {
+            constructor() {
+                this.playerName = "Kamu"
+                this.botName = "SigmaBot"
+                this.playerOption;
+                this.botOption;
+                this.winner = ""
+
+                this.playerScore = 0;
+                this.botScore = 0;
+            }
+
+            updateScore() {
+                if (this.winner === this.playerName) {
+                    this.playerScore++;
+                }else if (this.winner === this.botName) {
+                    this.botScore++;
+                }
+
+                document.getElementById("score1").textContent = this.playerScore;
+                document.getElementById("score2").textContent = this.botScore;
+
+            }
+            
+            set setplayerOption (option) {
+                this.playerOption = option;
+            }
+
+            set setbotOption (option) {
+                this.botOption = option;
+            }
+            
+            botBrain() {
+                const option = ["✊", "✋", "✌"];
+                const bot = option[Math.floor(Math.random() * option.length)];
+                return bot;
+            }
+
+            winCalculation() {
+                if(this.botOption == "✋" && this.playerOption == "✌"){
+                    return this.winner = this.playerName
+                }else if(this.botOption == "✋" && this.playerOption == "✊"){
+                    return this.winner = this.botName
+                }else  if(this.botOption == "✊" && this.playerOption == "✋"){
+                    return this.winner = this.playerName
+                }else if(this.botOption == "✊" && this.playerOption == "✌"){
+                    return this.winner = this.botName
+                }else if(this.botOption == "✌" && this.playerOption == "✊"){
+                    return this.winner = this.playerName
+                }else if(this.botOption == "✌" && this.playerOption == "✋"){
+                    return this.winner = this.botName
+                }
+                else {
+                    return this.winner = "SERI"
+                }
+            }
+
+            matchResult() {
+                if(this.winner != "SERI"){
+                    return `${this.winner} MENANG!`;
+                }
+                else {
+                    return `${this.winner}, Tidak Ada Pemenang`;
+                }
+
+            }
+            
+            // checkScore() {
+            //     if (this.playerOption && this.botOption) {
+            //         this.winCalculation
+            //         this.updateScore();
+            //     }
+            // }
+            
+        }
+
+        const game = new Start();
+
+        function pickOption(params) {
+            game.setplayerOption = params
+            game.setbotOption = game.botBrain();
+
+            game.updateScore();
+            game.winCalculation();
+
+            console.log(`player: ${game.playerOption} VS bot: ${game.botOption}`)
+            console.log("hasil akhir", game.matchResult())
+
+            const inGame = document.getElementById("inGame");
+            const result = document.getElementById("result");
+            
+            inGame.textContent = "..."
+            result.textContent = "..."
+
+            setTimeout(() => {
+                inGame.textContent = `${game.playerOption} VS ${game.botOption}`
+                result.textContent = game.matchResult();
+            }, 500);
+            
+        }
+    </script>
+</body>
+</html>

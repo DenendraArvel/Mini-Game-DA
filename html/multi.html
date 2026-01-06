@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi Mini Games Web</title>
+    <link rel="stylesheet" href="/layout/style3.css">
+</head>
+<body>
+    <div id="app1">
+        <div class="player1">
+            <h1>Player 1</h1>
+            <p>Skor: <span id="score1">0</span></p>
+            <div class="option1" onclick="pickOption1('✊')" tabindex="0" role="button">✊ (A)</div>
+            <div class="option1" onclick="pickOption1('✋')" tabindex="0" role="button">✋ (S)</div>
+            <div class="option1" onclick="pickOption1('✌')" tabindex="0" role="button">✌ (D)</div>
+        </div>
+        
+        <div class="in-app">
+            <div class="summary">
+                <h2 class="title">Match Result</h2>
+                <h1 id="inGame"></h1>
+                <h3 id="result"></h3>
+            </div>
+
+            <a href="/section.html">Kembali</a>
+        </div>
+
+        <div class="player2">
+            <h1>Player 2</h1>
+            <p>Skor: <span id="score2">0</span></p>
+            <div class="option2" onclick="pickOption2('✊')" tabindex="0" role="button">✊ <br> (I)</div>
+            <div class="option2" onclick="pickOption2('✋')" tabindex="0" role="button">✋ (O)</div>
+            <div class="option2" onclick="pickOption2('✌')" tabindex="0" role="button">✌ (P)</div>
+        </div>
+        
+        <div>
+            
+    <script>
+        class Start {
+            constructor() {
+                this.player1Name = "Player1"
+                this.player2Name = "Player2"
+                this.player1Option = null;
+                this.player2Option = null;
+                this.winner = ""
+
+                this.player1Score = 0;
+                this.player2Score = 0;
+            }
+
+            updateScore() {
+                if (this.winner === this.player1Name){
+                    this.player1Score++;
+                }else if (this.winner === this.player2Name) {
+                    this.player2Score++;
+                }
+
+                document.getElementById("score1").textContent = this.player1Score;
+                document.getElementById("score2").textContent = this.player2Score;
+
+            }
+            
+            setplayer1Option (option) {
+                this.player1Option = option;
+                this.gameCheck();
+            }
+            
+            setplayer2Option (option) {
+                this.player2Option = option;
+                this.gameCheck();
+            }
+
+            gameCheck() {
+                if (this.player1Option && this.player2Option) {
+                    this.winCalculation();
+                    this.matchResult();
+                    this.updateScore();
+                }
+            }
+            
+            winCalculation() {
+                const p1 = this.player1Option
+                const p2 = this.player2Option
+                
+                if (p1 == p2) {
+                    this.winner = "SERI"
+                }else if (
+                    (p1 == "✋" && p2 == "✊") ||
+                    (p1 == "✊" && p2 == "✌") ||
+                    (p1 == "✌" && p2 == "✋")
+                ) {
+                    this.winner = this.player1Name
+                }else {
+                    this.winner = this.player2Name
+                }
+            }
+            
+            matchResult() {
+                document.getElementById("inGame").textContent = `${this.player1Option} VS ${this.player2Option}`;
+
+                document.getElementById("result").textContent = 
+                this.winner === "SERI" 
+                ? "SERI! Tidak Ada Pemenang!"
+                : `${this.winner} MENANG!`;
+
+                
+                
+                this.player1Option = null;
+                this.player2Option = null;
+            }
+        }
+            
+            const game = new Start();
+
+            function pickOption1(option) {
+            game.setplayer1Option(option);
+        }
+        
+            function pickOption2(option) {
+            game.setplayer2Option(option);
+        }
+        
+        window.addEventListener('keydown', function(event) {
+            const key = event.key.toLowerCase(); 
+            
+            if (key === "a") pickOption1("✊");
+            if (key === "s") pickOption1("✋");
+            if (key === "d") pickOption1("✌");
+
+            if (key === "i") pickOption2("✊");
+            if (key === "o") pickOption2("✋");
+            if (key === "p") pickOption2("✌");
+        });
+</script>
+
+
+</body>
+</html>

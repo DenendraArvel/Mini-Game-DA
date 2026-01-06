@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+.button {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+.button a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    background-color: burlywood;
+    width: 200px;
+    margin: 10px 15px;
+    padding: 25px;
+    font-size: 20px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+
+.button a:hover {
+    box-shadow: 0 4px 4px black;
+    background-color: cornsilk;
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) ease-in-out;
+    transform: scale(105%);
+    -webkit-transform: scale(105%);
+    -moz-transform: scale(105%);
+    -ms-transform: scale(105%);
+    -o-transform: scale(105%);
+    -webkit-transition: cubic-bezier(0.215, 0.610, 0.355, 1) ease-in-out;
+    -moz-transition: cubic-bezier(0.215, 0.610, 0.355, 1) ease-in-out;
+    -ms-transition: cubic-bezier(0.215, 0.610, 0.355, 1) ease-in-out;
+    -o-transition: cubic-bezier(0.215, 0.610, 0.355, 1) ease-in-out;
+}
+.footer {
+    align-self: stretch;
+    width: 100%;
+    
+}
