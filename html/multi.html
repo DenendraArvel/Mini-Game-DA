@@ -8,13 +8,6 @@
 </head>
 <body>
     <div id="app1">
-        <div class="player1">
-            <h1>Player 1</h1>
-            <p>Skor: <span id="score1">0</span></p>
-            <div class="option1" onclick="pickOption1('✊')" tabindex="0" role="button">✊ (A)</div>
-            <div class="option1" onclick="pickOption1('✋')" tabindex="0" role="button">✋ (S)</div>
-            <div class="option1" onclick="pickOption1('✌')" tabindex="0" role="button">✌ (D)</div>
-        </div>
         
         <div class="in-app">
             <div class="summary">
@@ -26,12 +19,27 @@
             <a href="/index.html">Kembali</a>
         </div>
 
-        <div class="player2">
-            <h1>Player 2</h1>
-            <p>Skor: <span id="score2">0</span></p>
-            <div class="option2" onclick="pickOption2('✊')" tabindex="0" role="button">✊ <br> (I)</div>
-            <div class="option2" onclick="pickOption2('✋')" tabindex="0" role="button">✋ (O)</div>
-            <div class="option2" onclick="pickOption2('✌')" tabindex="0" role="button">✌ (P)</div>
+        <div class="player">
+            <div class="in-player1">
+                <div class="player1">
+                    <h1>Player 1</h1>
+                    <p>Skor: <span id="score1">0</span></p>
+                    <div class="option1" onclick="pickOption1('✊')" tabindex="0" role="button">✊ (A)</div>
+                    <div class="option1" onclick="pickOption1('✋')" tabindex="0" role="button">✋ (S)</div>
+                    <div class="option1" onclick="pickOption1('✌')" tabindex="0" role="button">✌ (D)</div>
+                </div>
+            </div>
+
+            <div class="in-player2">
+                <div class="player2">
+                    <h1>Player 2</h1>
+                    <p>Skor: <span id="score2">0</span></p>
+                    <div class="option2" onclick="pickOption2('✊')" tabindex="0" role="button">✊ <br> (I)</div>
+                    <div class="option2" onclick="pickOption2('✋')" tabindex="0" role="button">✋ (O)</div>
+                    <div class="option2" onclick="pickOption2('✌')" tabindex="0" role="button">✌ (P)</div>
+                </div>
+            </div>
+
         </div>
         
         <div>
